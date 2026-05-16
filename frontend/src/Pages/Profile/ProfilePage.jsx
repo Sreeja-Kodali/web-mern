@@ -1,25 +1,25 @@
 import React from 'react'
+import { Container, Stack, Avatar, Text } from '@mantine/core';
 import { useSelector } from 'react-redux';
-import { Container, Stack, Avatar, Text, Center, Loader } from '@mantine/core';
-import { getIsLoggedIn } from '../../redux/slices/User';
-export default function ProfilePage() {
-    const isLoggedIn = useSelector(getIsLoggedIn);
-    const user = useSelector((state) => state.user);
-                                                                            
-    if (!isLoggedIn) {
-        return <div>Redirecting...</div>;
-    }
+import { getName, getUserAvatar, getIsLoggedIn } from '../../redux/slices/User';
 
-    if (!user || !user.name) {
+export default function ProfilePage() {
+    const name = useSelector(getName);
+    const avatar = useSelector(getUserAvatar);
+    const isLoggedIn = useSelector(getIsLoggedIn);
+    
+    if (!isLoggedIn) {
         return (
-            <Center style={{ height: '100vh', width: '100%' }}>
-                <Loader size="xl" />
-            </Center>
+            <Container>
+                <Stack h={300} bg="var(--mantine-color-body)" align="center" justify="center" gap="lg">
+                    <Text size="lg" fw={500}>Please login first</Text>
+                </Stack>
+            </Container>
         );
     }
-
+    
     return (
-        <Container size="sm" py="xl">
+        <Container>
             <Stack
                 h={300}
                 bg="var(--mantine-color-body)"
@@ -27,10 +27,9 @@ export default function ProfilePage() {
                 justify="center"
                 gap="lg"
             >
-                <Avatar src={user.avatar} size={150} radius={150} alt="Profile avatar" />
-                <Text>{user.name}</Text>
-                <Text>{user.email}</Text>
-                {user.createdAt && <Text>{new Date(user.createdAt).toLocaleDateString()}</Text>}
+                <Avatar src={avatar || 'https://avatar.iran.liara.run/public'} size={150} radius={150} alt="it's me" />
+                <Text size="xl" fw={500}>{name || 'User'}</Text>
+                <Text>Welcome to your profile</Text>
             </Stack>
         </Container>
     )
