@@ -21,7 +21,10 @@ export default function LoginPage() {
 
   const googleResponse = async (res) => {
     try {
-      const token = res.credential;
+      console.log("Full credential response:", res);
+      const token = res?.credential;
+      console.log("Token:", token);
+      console.log("Token length:", token?.length);
 
       if (!token) {
         showNotification({
@@ -32,7 +35,9 @@ export default function LoginPage() {
         return;
       }
 
-      const response = await service.post(GOOGLE_AUTH_LOGIN, { token });
+      const requestBody = { token };
+      console.log("Request body to backend:", requestBody);
+      const response = await service.post(GOOGLE_AUTH_LOGIN, requestBody);
       const data = response.data;
 
       dispatch(

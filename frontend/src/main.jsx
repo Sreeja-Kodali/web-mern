@@ -12,6 +12,7 @@ import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
 const queryClient = new QueryClient();
 const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+console.log("import.meta.env.VITE_GOOGLE_CLIENT_ID:", import.meta.env.VITE_GOOGLE_CLIENT_ID);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

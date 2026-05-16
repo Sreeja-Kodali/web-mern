@@ -75,7 +75,7 @@ By default, `.env` files are ignored. But for Vite frontend to work properly, yo
 #### 📁 `backend/.env`
 ```env
 MONGODB_URI=your_mongodb_connection_string
-PORT=3000
+PORT=5173
 GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
 JWT_SECRET=your_secure_jwt_secret
@@ -85,7 +85,7 @@ JWT_SECRET=your_secure_jwt_secret
 ```env
 VITE_GOOGLE_CLIENT_ID=your_google_client_id
 VITE_BZENV=development  # or production
-VITE_DEV_PROXY=http://localhost:3000
+VITE_DEV_PROXY=http://localhost:5173
 ```
 
 ---

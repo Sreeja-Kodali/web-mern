@@ -11,6 +11,8 @@ import userRouter from "./routes/userRouter.js";
 import shortURLRouter from "./routes/shortURLRouter.js";
 const app = express();
 
+console.log("process.env.GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID);
+
 
 // middlewares
 
